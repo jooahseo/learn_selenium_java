@@ -3,7 +3,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
-import sun.jvm.hotspot.utilities.Assert;
 
 /**
  * 1. select dropdown on Amazon
@@ -18,7 +17,7 @@ public class Dropdowns {
         System.setProperty("webdriver.chrome.driver", "/Users/jooahseo/work/chromedriver");
         WebDriver driver = new ChromeDriver();
 
-        String product= "poland spring energy water 12";
+        String product= "poland spring energy water";
         String[] productWords = product.split(" ");
         String price;
 
@@ -33,20 +32,21 @@ public class Dropdowns {
         searchbar.sendKeys(product);
         submitButton.click();
 
-        driver.findElement(By.xpath("//div[@data-index='0']")).click();
-        if(allWordsIncludedInTitle(driver, productWords)){
+        driver.findElement(By.xpath("//img[@data-image-index='1']")).click();
+        String productTitle = driver.findElement(By.id("productTitle")).getText();
+
+        System.out.println("First product in the result is: " + productTitle);
+
+        if(allWordsInTitle(productTitle.toLowerCase(), productWords)){
             price = driver.findElement(By.id("priceblock_ourprice")).getText();
-            System.out.println(product + "'s price is " +price);
+            System.out.println("Price is " + price);
         }else{
             System.out.println("no matching product");
         }
-        Thread.sleep(5000);
-        driver.close();
+        driver.quit();
     }
 
-    private static boolean allWordsIncludedInTitle(WebDriver driver, String[] words){
-        String productTitle = driver.findElement(By.id("productTitle")).getText().toLowerCase();
-
+    private static boolean allWordsInTitle(String productTitle, String[] words){
         for(String word: words){
             if(!productTitle.contains(word.toLowerCase())){
                 return false;

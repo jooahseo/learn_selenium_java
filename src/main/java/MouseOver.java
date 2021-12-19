@@ -6,9 +6,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
 /**
- * 1. mouse over to the sign in
- * 2. click Account
- * 3. start search the product with Capital Letters only
+ * 1. Go to amazon.com
+ * 2. mouse over to the sign in
+ * 3. click Account
+ * 4. start search the product with Capital Letters only
  */
 public class MouseOver {
     public static void main(String[] args) throws InterruptedException {

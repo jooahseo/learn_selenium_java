@@ -13,7 +13,7 @@ import org.openqa.selenium.support.ui.Select;
  * 6. if no, print "no matching product"
  */
 public class Dropdowns {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "/Users/jooahseo/work/chromedriver");
         WebDriver driver = new ChromeDriver();
 

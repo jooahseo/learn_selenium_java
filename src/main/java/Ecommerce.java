@@ -40,11 +40,12 @@ public class Ecommerce {
         for(int i=0; i< products.size(); i++){
             String productName = products.get(i).getText();
             boolean contains = Arrays.stream(shoppingList).anyMatch(productName::contains);
+            int count = 0;
             if(contains){
-                System.out.println("product name is: " + productName);
-                System.out.println("add product!");
                 buttons.get(i).click();
+                count ++;
             }
+            if(count == shoppingList.length) break;
         }
     }
 

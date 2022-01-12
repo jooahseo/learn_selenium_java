@@ -73,8 +73,8 @@
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-http:4.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-safari-driver:4.0.0" level="project" />
     <orderEntry type="library" name="Maven: org.seleniumhq.selenium:selenium-support:4.0.0" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:7.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.testng:testng:7.4.0" level="project" />
     <orderEntry type="library" name="Maven: com.beust:jcommander:1.78" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.webjars:jquery:3.5.1" level="project" />
+    <orderEntry type="library" name="Maven: org.webjars:jquery:3.5.1" level="project" />
   </component>
 </module>

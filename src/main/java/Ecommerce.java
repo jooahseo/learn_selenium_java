@@ -3,6 +3,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 
 import java.util.Arrays;
 import java.util.List;
@@ -15,10 +16,10 @@ public class Ecommerce {
         driver.get("https://rahulshettyacademy.com/seleniumPractise/");
         String[] shoppingList = {"Brocolli","Tomato", "Mushroom", "Walnuts"};
 
-        waitUntilProductPageIsLoaded(driver);
         addProductIntoCart(shoppingList, driver);
         proceedCart(driver);
         chooseCountryAndAgree(driver);
+        checkOrderComplete(driver);
 
         Thread.sleep(5000);
 
@@ -30,7 +31,9 @@ public class Ecommerce {
      * 2. Once matching product is found, click button to add to cart
      * @param shoppingList
      */
-    public static void addProductIntoCart(String[] shoppingList, WebDriver driver){
+    public static void addProductIntoCart(String[] shoppingList, WebDriver driver) throws InterruptedException {
+        waitUntilProductPageIsLoaded(driver);
+
         List<WebElement> products = driver.findElements(By.xpath("//h4[@class='product-name']"));
         List<WebElement> buttons = driver.findElements(By.xpath("//button[text()='ADD TO CART']"));
 
@@ -70,6 +73,13 @@ public class Ecommerce {
         proceedBtn.click();
     }
 
+    public static void checkOrderComplete(WebDriver driver) throws InterruptedException {
+        Thread.sleep(1000);
+        WebElement thankYouMessage = driver.findElement(By.xpath("//span[contains(text(),'Thank you, your order has been placed successfully')]"));
+        Assert.assertTrue(thankYouMessage.isDisplayed());
+        System.out.println("order has been placed!");
+    }
+
     public static void waitUntilProductPageIsLoaded(WebDriver driver) throws InterruptedException {
         WebElement product;
         for(int i=0; i<3; i++){
@@ -77,8 +87,8 @@ public class Ecommerce {
                 product = driver.findElement(By.xpath("//div[@class='product']"));
                 if(product.isDisplayed()) break;
             }catch(Exception e){
-                System.out.println("waiting...");
-                Thread.sleep(3000);
+                System.out.println("page is loading...");
+                Thread.sleep(2000);
             }
         }
     }
@@ -90,8 +100,8 @@ public class Ecommerce {
                 placeOrder = driver.findElement(By.xpath("//button[normalize-space()='Place Order']"));
                 if(placeOrder.isDisplayed()) break;
             }catch(Exception e){
-                System.out.println("waiting...");
-                Thread.sleep(3000);
+                System.out.println("page is loading...");
+                Thread.sleep(2000);
             }
         }
     }

@@ -29,4 +29,18 @@ public class ScreenController {
         Thread.sleep(millisec);
     }
 
+    public void waitUntilLocatorExist(By locator) throws InterruptedException {
+        for(int i=0; i<10; i++){
+            if(elementExist(locator)) break;
+            Thread.sleep(3000);
+        }
+    }
+
+    public void waitUntilElementExist(WebElement element) throws InterruptedException {
+        for(int i=0; i<10; i++){
+            if(element.isDisplayed()) break;
+            Thread.sleep(3000);
+        }
+    }
+
 }

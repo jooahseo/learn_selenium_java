@@ -8,7 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
-public class Exercise {
+public class DriverScope {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "/Users/jooahseo/work/chromedriver");
         WebDriver driver = new ChromeDriver();

@@ -4,7 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public class Exercise {
     public static void main(String[] args) throws InterruptedException {
@@ -30,6 +32,17 @@ public class Exercise {
         for(int i=0; i< firstColumnATag.size(); i++){
             String openLinkOnTab = Keys.chord(Keys.COMMAND, Keys.ENTER);
             firstColumnFooter.findElements(By.tagName("a")).get(i).sendKeys(openLinkOnTab);
+        }
+
+        //move to each tab -> get the title
+        Thread.sleep(5000);
+
+        Set<String> windows = driver.getWindowHandles();
+
+        Iterator<String> window = windows.iterator();
+        while(window.hasNext()){
+            driver.switchTo().window(window.next());
+            System.out.println(driver.getTitle() +" page is opened");
         }
 
         Thread.sleep(5000);

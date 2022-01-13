@@ -28,7 +28,7 @@ public class Exercise {
         List<WebElement> firstColumnATag = firstColumnFooter.findElements(By.tagName("a"));
         System.out.println("Total links in the first column of the footer is: " + firstColumnATag.size());
 
-        // click each link in the first column and check if the pages open
+        // click each link in the first column and open in a new tab
         for(int i=0; i< firstColumnATag.size(); i++){
             String openLinkOnTab = Keys.chord(Keys.COMMAND, Keys.ENTER);
             firstColumnFooter.findElements(By.tagName("a")).get(i).sendKeys(openLinkOnTab);

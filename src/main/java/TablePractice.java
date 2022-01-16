@@ -7,7 +7,7 @@ import org.testng.Assert;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Table {
+public class TablePractice {
     public static void main(String[] args) throws InterruptedException {
         System.setProperty("webdriver.chrome.driver", "/Users/jooahseo/work/chromedriver");
         WebDriver driver = new ChromeDriver();
@@ -55,7 +55,7 @@ public class Table {
         String product = "Apple";
         List<String> prices = items.stream().filter(i -> i.getText().equals(product))
                               .map(i -> getPrice(i)).collect(Collectors.toList());
-        prices.stream().forEach(price -> System.out.println("price of " + product + " is: " + price));
+
 
         Thread.sleep(3000);
         driver.quit();

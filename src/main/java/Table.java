@@ -47,6 +47,21 @@ public class Table {
 
         Assert.assertTrue(originalList.equals(sortedList));
 
+        /**
+         * Task 3:
+         * Get price of for a specific product
+         */
+        System.out.println("-----------------Task 3-----------------");
+        String product = "Apple";
+        List<String> prices = items.stream().filter(i -> i.getText().equals(product))
+                              .map(i -> getPrice(i)).collect(Collectors.toList());
+        prices.stream().forEach(price -> System.out.println("price of " + product + " is: " + price));
+
+        Thread.sleep(3000);
+        driver.quit();
     }
 
+    public static String getPrice(WebElement item){
+        return item.findElement(By.xpath("./following-sibling::td")).getText();
+    }
 }

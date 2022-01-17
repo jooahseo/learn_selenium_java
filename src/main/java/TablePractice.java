@@ -56,6 +56,22 @@ public class TablePractice {
         List<String> prices = items.stream().filter(i -> i.getText().equals(product))
                               .map(i -> getPrice(i)).collect(Collectors.toList());
 
+        /**
+         * Task 4:
+         * Check if filter search is working
+         */
+        System.out.println("-----------------Task 4-----------------");
+        driver.get("https://rahulshettyacademy.com/seleniumPractise/#/offers");
+
+        driver.findElement(By.id("search-field")).sendKeys("Rice");
+        //1 result
+        List<WebElement> veggies=driver.findElements(By.xpath("//tr/td[1]"));
+
+        //1 result
+        List<WebElement> filteredList= veggies.stream().filter(veggie->veggie.getText().contains("Rice")).
+                                        collect(Collectors.toList());
+
+        Assert.assertEquals(veggies.size(), filteredList.size());
 
         Thread.sleep(3000);
         driver.quit();

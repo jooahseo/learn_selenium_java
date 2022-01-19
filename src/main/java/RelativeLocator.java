@@ -32,11 +32,20 @@ public class RelativeLocator {
         /**
          * Task 3: Click the box that on the 'left' side of Student label
          */
-        System.out.println("-----------------Task 2-----------------");
+        System.out.println("-----------------Task 3-----------------");
         WebElement studentLabel = driver.findElement(By.xpath("//label[normalize-space()='Student']"));
         WebElement leftButton = driver.findElement(with(By.tagName("input")).toLeftOf(studentLabel));
 
         leftButton.click();
+
+        /**
+         * Task 4: Get text next (right) of the Checkbox
+         */
+        System.out.println("-----------------Task 4-----------------");
+        WebElement checkBox = driver.findElement(By.xpath("//input[@id='exampleCheck1']"));
+        WebElement labelRight = driver.findElement(with(By.tagName("label")).toRightOf(checkBox));
+
+        System.out.println("Text of right side of checkbox is: " + labelRight.getText());
 
         Thread.sleep(3000);
         driver.quit();

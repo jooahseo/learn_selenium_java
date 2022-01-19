@@ -24,6 +24,8 @@ public class MultipleWindowsTabs {
         driver.get("https://rahulshettyacademy.com/angularpractice/");
         //open a new blank tab - but no knowledge on that new tab
         driver.switchTo().newWindow(WindowType.TAB);
+        //can open new window instead of tab
+        //driver.switchTo().newWindow(WindowType.WINDOW);
 
         //get the window's id for each window
         Set<String> handles = driver.getWindowHandles();

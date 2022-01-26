@@ -1,4 +1,5 @@
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -49,11 +50,15 @@ public class DataDrivenExcel {
                     if(row.getCell(col).getStringCellValue().equalsIgnoreCase(testCase)){
                         //desired row identified - pull all the data of that row
                         Iterator<Cell> values = row.cellIterator();
+                        values.next(); // skip the first column's data (it's testcase)
                         while(values.hasNext()){
-                            String data = values.next().getStringCellValue();
-                            if(!data.equalsIgnoreCase(testCase)){
-                                testdata.add(data);
+                            Cell c = values.next();
+                            if(c.getCellType().equals(CellType.STRING)){
+                                testdata.add(c.getStringCellValue());
+                            }else{
+                                testdata.add(String.valueOf(c.getNumericCellValue()));
                             }
+
                         }
                     }
                 }

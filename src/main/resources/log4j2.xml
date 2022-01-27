@@ -13,6 +13,11 @@
         </Console>
     </Appenders>
     <Loggers>
+        <!--only error log message from package1 and save it to File-->
+        <Logger name="package1.Demo" level="error" additivity="false">
+            <AppenderRef ref="File"/>
+        </Logger>
+
         <Root level="trace">
             <AppenderRef ref="File"/>
         </Root>

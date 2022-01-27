@@ -1,0 +1,4 @@
+22:48:44.177 [main] DEBUG Log4jDemo - debug message
+22:48:44.182 [main] INFO  Log4jDemo - info message
+22:48:44.182 [main] ERROR Log4jDemo - error message
+22:48:44.182 [main] FATAL Log4jDemo - fatal message
